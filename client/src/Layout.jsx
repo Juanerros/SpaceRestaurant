@@ -14,7 +14,12 @@ const Layout = () => {
 
   return (
     <>
-      {/* <header>
+      {
+      /*
+      
+      Aca se renderiza los componentes principales
+      
+      <header>
         <Nav />
       </header>
       <main>

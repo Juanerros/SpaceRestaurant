@@ -8,26 +8,9 @@ const instance = axios.create({
   withCredentials: true,
 });
 
-// Interceptor para manejar errores
-instance.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error?.response?.status === 429) {
-      // Crear un error personalizado que mantenga la estructura de axios
-      const customError = {
-        ...error,
-        response: {
-          ...error.response,
-          data: {
-            success: false,
-            message: 'Demasiadas solicitudes, por favor intenta más tarde.'
-          }
-        }
-      };
-      return Promise.reject(customError);
-    }
-    return Promise.reject(error);
-  }
-);
+export const endpoints = {
+  auth: '/auth',
+  admin: '/admin',
+}
 
 export default instance;
