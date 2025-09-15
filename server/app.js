@@ -1,5 +1,10 @@
 // Importaciones de rutas
 import authRoutes from './routes/Auth.js';
+import roleRoutes from './routes/Roles.js';
+import categoryRoutes from './routes/Categories.js';
+import menuRoutes from './routes/Menu.js';
+import tableRoutes from './routes/Tables.js';
+import reservationRoutes from './routes/Reservations.js';
 
 // Importaciones de dependencias 
 import express from 'express';
@@ -8,7 +13,6 @@ import logger from './middlewares/logger.js';
 import loadEnv from './utils/loadEnv.js';
 import cookieParser from 'cookie-parser';
 import loadStaticFiles from './utils/loadStaticsFiles.js'
-import { requireAuth, requireAdmin } from './middlewares/authMiddleware.js';
 
 // Middlewares
 const app = express();
@@ -37,7 +41,11 @@ if (!isProduction) {
 
 // Rutas
 app.use('/api/auth', authRoutes);
-
+app.use('/api/roles', roleRoutes);
+app.use('/api/categories', categoryRoutes);
+app.use('/api/menu', menuRoutes);
+app.use('/api/tables', tableRoutes);
+app.use('/api/reservations', reservationRoutes);
 
 // Testeo de api
 app.get('/api/ping', async (req, res) => {

@@ -66,7 +66,7 @@ INSERT INTO users (name, password, id_role) VALUES
 ('Juan Pérez', 'hashedpassword1', 1),
 ('Ana López', 'hashedpassword2', 2),
 ('Carlos Gómez', 'hashedpassword3', 3),
-('Lucía Torres', 'hashedpassword4', 4)
+('Lucía Torres', 'hashedpassword4', 4);
 
 -- Platos de ejemplo en el menú
 INSERT INTO menu (name, price, is_available, id_category) VALUES
@@ -79,9 +79,9 @@ INSERT INTO menu (name, price, is_available, id_category) VALUES
 
 -- Mesas de ejemplo
 INSERT INTO tables (status, table_number, max_people, id_waiter) VALUES
-('free', 1, 4, 5),
-('reserved', 2, 2, 5),
-('occupied', 3, 6, 5),
+('free', 1, 4, 4),
+('reserved', 2, 2, 4),
+('occupied', 3, 6, 4),
 ('free', 4, 8, NULL);
 
 -- Reservas de ejemplo
