@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import Nav from './components/Navbar/Nav';
 import './globals.css';
 // Componentes
@@ -12,6 +13,12 @@ const Layout = () => {
         <Nav />
 
       </header>
+
+      <div>
+
+        <Outlet />
+
+      </div>
       
     </>
   );

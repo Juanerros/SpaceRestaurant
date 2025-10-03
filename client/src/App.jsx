@@ -31,8 +31,10 @@ function App() {
           pauseOnFocusLoss
           pauseOnHover />
         <Routes>
+          
           {/* Rutas del Cliente */}
           <Route path="/" element={<Layout />}>
+
             <Route index element={<Home />} />
             
           </Route>

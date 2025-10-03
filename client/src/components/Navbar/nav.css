@@ -1,0 +1,385 @@
+/* Estilos para el navbar con temática espacial */
+.navbarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background: rgba(15, 12, 41, 0.2);
+  color: white;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.4s ease;
+}
+
+.navbarContainer.scrolled {
+  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  padding: 0.8rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo centrado */
+.navbarLogo {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.4s ease;
+}
+
+.navbarContainer.scrolled .navbarLogo {
+  transform: translateX(-50%) scale(0.85);
+}
+
+.nabvarBrand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-left: 1rem;
+  transition: all 0.4s ease;
+}
+
+.navbarContainer.scrolled .nabvarBrand {
+  font-size: 1.5rem;
+}
+
+.logo-img {
+  height: 50px;
+  width: auto;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+  transition: all 0.4s ease;
+}
+
+.navbarContainer.scrolled .logo-img {
+  height: 40px;
+}
+
+/* Menú izquierdo */
+.navbarMenu-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbarMenu {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.navbar-item {
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.navbar-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.navbar-link:hover {
+  color: #64ffda;
+  transform: translateY(-3px);
+}
+
+/* Botón de reserva */
+.buttonReser {
+  padding: 0.9rem 2.2rem;
+  background-color: transparent;
+  border: 2px solid #64ffda;
+  border-radius: 0.6rem;
+  color: #64ffda;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: visible;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.navbarContainer.scrolled .buttonReser {
+  padding: 0.7rem 1.8rem;
+  font-size: 1rem;
+}
+
+.buttonReser::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid #64ffda;
+  border-radius: 0.8rem;
+  opacity: 0;
+  z-index: -1;
+}
+
+.buttonReser:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+}
+
+.buttonReser:hover::after {
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Menú móvil */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-toggle.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Menú desplegable para móvil */
+.navbarMenuContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(15, 12, 41, 0.98);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.navbarMenuContainer.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.navbarMenu-mobile {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 3rem;
+  text-align: center;
+  width: 100%;
+}
+
+/* Media queries para responsive */
+@media (max-width: 992px) {
+  .navbarMenu-left {
+    display: none;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+  
+  .navbarLogo {
+    position: relative;
+    left: 0;
+    transform: none;
+  }
+  
+  .navbarContainer {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+  .nabvarBrand {
+    font-size: 1.5rem;
+  }
+  
+  .logo-img {
+    height: 40px;
+  }
+  
+  .buttonReser {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .navbarContainer.scrolled .buttonReser {
+    padding: 0.6rem 1.3rem;
+    font-size: 0.85rem;
+  }
+}
+
+.navbar-item {
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.navbarMenuContainer.open .navbar-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.navbar-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 2.5rem;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  display: block;
+  letter-spacing: 2px;
+}
+
+.navbar-link:hover {
+  color: #64ffda;
+  transform: scale(1.05);
+}
+
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #64ffda;
+  transition: width 0.3s ease;
+}
+
+.navbar-link:hover::after {
+  width: 100%;
+}
+
+/* Botón de menú hamburguesa */
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 24px;
+  position: relative;
+  width: 30px;
+  z-index: 1001;
+  padding: 0;
+}
+
+.bar {
+  background-color: white;
+  border-radius: 3px;
+  height: 3px;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+}
+
+.menu-toggle.active .bar:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Animación para los elementos del menú */
+.navbarMenuContainer.open .navbar-item:nth-child(1) { transition-delay: 0.1s; }
+.navbarMenuContainer.open .navbar-item:nth-child(2) { transition-delay: 0.2s; }
+.navbarMenuContainer.open .navbar-item:nth-child(3) { transition-delay: 0.3s; }
+.navbarMenuContainer.open .navbar-item:nth-child(4) { transition-delay: 0.4s; }
+
+/* Overlay para cerrar el menú al hacer clic fuera */
+.navbarMenuContainer::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.navbarMenuContainer.open::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .navbarContainer {
+    padding: 1rem;
+  }
+  
+  .nabvarBrand {
+    font-size: 1.2rem;
+  }
+  
+  .navbarMenuContainer {
+    width: 250px;
+  }
+}
